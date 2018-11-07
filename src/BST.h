@@ -18,7 +18,6 @@ private:
     int data;
     Node * left;
     Node * right;
-
 };
 
 class BST

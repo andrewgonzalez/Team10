@@ -4,22 +4,20 @@
 
 #include "BST.h"
 
-
+using namespace std;
 
 // Initialize variables
 Node::Node()
 {
-    data = NULL;
-    left = NULL;
-    right = NULL;
+    left = nullptr;
+    right = nullptr;
 }
 
 // Delete node
 Node::~Node()
 {
-    data = NULL;
-    left = NULL;
-    right = NULL;
+    left = nullptr;
+    right = nullptr;
 }
 
 int Node::add(int data_in)
@@ -40,7 +38,7 @@ int Node::display()
 // Initialize tree to NULL
 BST::BST()
 {
-    root = NULL;
+    root = nullptr;
 }
 
 // Delete tree

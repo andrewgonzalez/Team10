@@ -9,6 +9,8 @@ using namespace std;
 
 int main()
 {
-    
+    Node node;
+    node.add(5);
+    node.display();
     return 1;
 }
