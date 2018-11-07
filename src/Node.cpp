@@ -5,7 +5,7 @@
 
 #include "Node.h"
 
-Node::Node() : left(NULL) right(NULL) {
+Node::Node() : left(nullptr), right(nullptr) {
 }
 
 Node* Node::goLeft() {
@@ -17,16 +17,12 @@ Node* Node::goRight() {
 }
 
 bool Node::setLeft(Node & toAdd) {
-    if (!toAdd)
-        return false;
-    left = toAdd;
+    left = &toAdd;
     return true;
 }
 
 bool Node::setRight(Node & toAdd) {
-    if (!toAdd)
-        return false;
-    right = toAdd;
+    right = &toAdd;
     return true;
 }
 
