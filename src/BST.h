@@ -7,18 +7,6 @@
 
 #include <iostream>
 
-class Node
-{
-public:
-    Node();
-    ~Node();
-    int add(int data_in);
-    int display();
-private:
-    int data;
-    Node * left;
-    Node * right;
-};
 
 class BST
 {

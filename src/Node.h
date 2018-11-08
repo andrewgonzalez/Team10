@@ -10,11 +10,13 @@ class Node
 {
 public:
     Node();
-    bool setLeft(Node & toAdd);
-    bool setRight(Node & toAdd);
     Node * goLeft();
     Node * goRight();
+    bool setLeft(Node & toAdd);
+    bool setRight(Node & toAdd);
+    bool compare(int i);
 private:
+    int data;
     Node * left;
     Node * right;
 };
