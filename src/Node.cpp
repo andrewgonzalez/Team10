@@ -8,6 +8,11 @@
 Node::Node() : left(nullptr), right(nullptr) {
 }
 
+Node::~Node() {
+    left = nullptr;
+    right = nullptr;
+}
+
 Node* Node::goLeft() {
     return left;
 }

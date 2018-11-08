@@ -10,6 +10,7 @@ class Node
 {
 public:
     Node();
+    virtual ~Node();
     bool setLeft(Node & toAdd);
     bool setRight(Node & toAdd);
     Node * goLeft();
