@@ -11,11 +11,23 @@
 class BST
 {
 public:
+
     BST();
     ~BST();
+
+    // Call to display tree
+    void display_tree();
+    // Display like an actual tree
+    // Very left is top of tree
+    void display_tree(Node c, int indent);
+
+    // Display tree in sorted order
     int add(int data);
+
 private:
+
     Node * root;
+
 };
 
 #endif BST_H

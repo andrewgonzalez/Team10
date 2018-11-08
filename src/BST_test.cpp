@@ -3,6 +3,7 @@
 //
 
 #include "BST.cpp"
+#include "Balanced_Tree.cpp"
 #include <iostream>
 
 using namespace std;
