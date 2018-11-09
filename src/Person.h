@@ -8,19 +8,21 @@
 #include <string>
 #include "Node.h"
 
+using namespace std;
+
 class Person : public Node {
 public:
     Person();
-    virtual ~Person();
+    ~Person() override;
     virtual void display();
 private:
     int ID;                 // 9 digits
     int phoneNumber;        // 10 digits
     int zipcode;            // 5 digits
-    std::string * name;     // 25 characters
-    std::string * address;  // 25 characters
-    std::string * city;     // 14 characters
-    std::string * state;    // 2 characters
+    string * name;     // 25 characters
+    string * address;  // 25 characters
+    string * city;     // 14 characters
+    string * state;    // 2 characters
 };
 
 
