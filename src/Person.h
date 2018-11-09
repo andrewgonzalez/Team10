@@ -13,16 +13,20 @@ using namespace std;
 class Person : public Node {
 public:
     Person();
+    Person(int id, int phone, int zip,
+            string & name, string & address, string & city, string & state);
     ~Person() override;
     virtual void display();
+    bool compare(int match);
+    void setReport();
 private:
     int ID;                 // 9 digits
     int phoneNumber;        // 10 digits
     int zipcode;            // 5 digits
-    string * name;     // 25 characters
-    string * address;  // 25 characters
-    string * city;     // 14 characters
-    string * state;    // 2 characters
+    string name;     // 25 characters
+    string address;  // 25 characters
+    string city;     // 14 characters
+    string state;    // 2 characters
 };
 
 
