@@ -5,6 +5,7 @@
 #ifndef BST_H
 #define BST_H
 
+#include "Node.h"
 #include <iostream>
 
 
@@ -24,7 +25,7 @@ public:
     // Display tree in sorted order
     int add(int data);
 
-private:
+protected:
 
     Node * root;
 

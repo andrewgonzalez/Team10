@@ -5,24 +5,44 @@
 
 #include "Node.h"
 
-Node::Node() : left(nullptr), right(nullptr) {
+Node::Node() : data(0), height(0),
+                left(nullptr), right(nullptr) {
 }
 
-Node* Node::goLeft() {
+void Node::set_height(int h) {
+    this->height = h;
+}
+
+int Node::get_height() {
+   if ( this == nullptr )
+       return 0;
+   else
+       return this->height;
+}
+
+int Node::get_left_height() {
+
+}
+
+int Node::get_right_height() {
+
+}
+
+Node* Node::go_left() {
     return left;
 }
 
-Node* Node::goRight() {
+Node* Node::go_right() {
     return right;
 }
 
-bool Node::setLeft(Node & toAdd) {
-    left = &toAdd;
+bool Node::set_left(Node & to_add) {
+    left = &to_add;
     return true;
 }
 
-bool Node::setRight(Node & toAdd) {
-    right = &toAdd;
+bool Node::set_right(Node & to_add) {
+    right = &to_add;
     return true;
 }
 

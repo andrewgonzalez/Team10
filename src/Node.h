@@ -6,18 +6,31 @@
 #ifndef NODE_H
 #define NODE_H
 
-class Node
-{
+class Node {
+
 public:
+
     Node();
-    Node * goLeft();
-    Node * goRight();
-    bool setLeft(Node & toAdd);
-    bool setRight(Node & toAdd);
+
+    void set_height( int h );
+    int get_height();
+    int get_left_height();
+    int get_right_height();
+
+    Node * go_left();
+    Node * go_right();
+
+    bool set_left(Node & to_add);
+    bool set_right(Node & to_add);
     bool compare(int i);
+
 private:
+
     int data;
+    int height;
     Node * left;
     Node * right;
+
 };
+
 #endif NODE_H

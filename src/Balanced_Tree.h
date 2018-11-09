@@ -7,21 +7,23 @@
 
 #include "BST.h"
 
-class Balanced_Tree: public BST
-{
-    public:
+class Balanced_Tree: public BST {
 
-        Balanced_Tree();
-        ~Balanced_Tree();
+public:
 
-        void insert( int num );
-        void insert( Node c, int num );
+    Balanced_Tree();
+    ~Balanced_Tree();
+
+    void insert( int num );
+    Node* insert( Node c, int num );
+
+    int max( int a, int b );
 
 
-    private:
+private:
 
-        // Keep track of balance of particular node
-        int balance;
+    // Keep track of balance of particular node
+    int balance;
 
 };
 

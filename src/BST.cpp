@@ -10,7 +10,7 @@ using namespace std;
 // Initialize tree to NULL
 BST::BST()
 {
-    this.root = nullptr;
+    this->root = nullptr;
 }
 
 // Delete tree
