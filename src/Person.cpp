@@ -1,16 +1,19 @@
 //
 // Created by Andrew Gonzalez on 11/8/18.
+// Implementation file for Person.h.
 //
 
 #include <iostream>
 #include "Person.h"
 
+// Default constructor
 Person::Person() {
     ID = 0;
     phoneNumber = 0;
     zipcode = 0;
 }
 
+// Constructor taking all data members as parameters.
 Person::Person(int id, int phone, int zip,
         string & name, string & address, string & city, string & state) {
     ID = id;
@@ -22,6 +25,9 @@ Person::Person(int id, int phone, int zip,
     this->state = state;
 }
 
+// Print Person data members to the standard output.
+// Input: none
+// Output: void
 void Person::display() {
     cout << name << endl;
     cout << "Phone#: " << phoneNumber << endl;
@@ -30,6 +36,9 @@ void Person::display() {
     cout << zipcode << endl;
 }
 
+// Compare passed in ID with the Person's ID.
+// Input: int of the ID to compare with.
+// Output: true if they match, false otherwise.
 bool Person::compare(int match) {
     return match == ID;
 }

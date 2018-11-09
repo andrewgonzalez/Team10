@@ -1,5 +1,6 @@
 //
 // Created by Andrew Gonzalez on 11/8/18.
+// Header file for the Person class.
 //
 
 #ifndef PERSON_H
