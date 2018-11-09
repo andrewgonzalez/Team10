@@ -10,6 +10,7 @@ class Node
 {
 public:
     Node();
+    Node(const Node& copyFrom);
     virtual ~Node();
     bool setLeft(Node & toAdd);
     bool setRight(Node & toAdd);

@@ -8,6 +8,11 @@
 Node::Node() : left(nullptr), right(nullptr) {
 }
 
+Node::Node(const Node& copyFrom) {
+    left = copyFrom.left;
+    right = copyFrom.right;
+}
+
 Node::~Node() {
     left = nullptr;
     right = nullptr;

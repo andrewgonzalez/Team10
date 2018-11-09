@@ -7,10 +7,21 @@
 #include "Person.h"
 
 // Default constructor
-Person::Person() {
+Person::Person() : Node() {
     ID = 0;
     phoneNumber = 0;
     zipcode = 0;
+}
+
+// Copy constructor.
+Person::Person(const Person& copyFrom) : Node(copyFrom) {
+    ID = copyFrom.ID;
+    phoneNumber = copyFrom.phoneNumber;
+    zipcode = copyFrom.zipcode;
+    name = copyFrom.name;
+    address = copyFrom.address;
+    city = copyFrom.city;
+    state = copyFrom.state;
 }
 
 // Constructor taking all data members as parameters.
@@ -39,7 +50,7 @@ void Person::display() {
 // Compare passed in ID with the Person's ID.
 // Input: int of the ID to compare with.
 // Output: true if they match, false otherwise.
-bool Person::compare(int match) {
+bool Person::compare(const int match) {
     return match == ID;
 }
 

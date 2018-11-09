@@ -16,6 +16,7 @@ public:
     Person();
     Person(int id, int phone, int zip,
             string & name, string & address, string & city, string & state);
+    Person(const Person& copyFrom);
     ~Person() override;
     virtual void display();
     bool compare(int match);
