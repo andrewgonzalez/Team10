@@ -2,6 +2,7 @@
 // Created by Andrew Gonzalez on 11/8/18.
 //
 
+#include <iostream>
 #include "Person.h"
 
 Person::Person() {
@@ -22,6 +23,18 @@ Person::Person(int id, int phone, int zip,
 }
 
 void Person::display() {
+    cout << name << endl;
+    cout << "Phone#: " << phoneNumber << endl;
+    cout << address << endl;
+    cout << city << ", " << state << endl;
+    cout << zipcode << endl;
+}
+
+bool Person::compare(int match) {
+    return match == ID;
+}
+
+void Person::setReport() {
 }
 
 
