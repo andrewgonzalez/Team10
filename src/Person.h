@@ -19,7 +19,7 @@ public:
     ~Person() override;
     virtual void display();
     bool compare(int match);
-    void setReport();
+    void setReport();  // what are we doing with this?
 private:
     int ID;                 // 9 digits
     int phoneNumber;        // 10 digits
