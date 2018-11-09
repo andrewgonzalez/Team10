@@ -14,10 +14,10 @@ BST::BST()
 }
 
 // Delete tree
-/*BST::~BST() {
+BST::~BST() {
     destroy_tree(root);
 }
- */
+
 
 // If !root, return 0 as fail.
 // Postorder traversal to hold open all calls

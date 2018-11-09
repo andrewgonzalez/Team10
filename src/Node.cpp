@@ -15,7 +15,6 @@ Node::Node(int data_in) : data(data_in), height(0),
 }
 
 Node::~Node() {
-    delete this;
 }
 
 void Node::display() const {

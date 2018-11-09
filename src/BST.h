@@ -14,7 +14,7 @@ class BST
 public:
 
     BST();
-    ~BST() =default;
+    ~BST();
 
     // Call to display tree
     void display_tree();
