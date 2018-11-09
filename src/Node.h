@@ -16,7 +16,7 @@ public:
 
     Node();
     Node(int data);
-    ~Node() =default;
+    ~Node();
 
     void display() const;
 

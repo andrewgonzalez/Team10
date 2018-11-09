@@ -14,7 +14,9 @@ Node::Node(int data_in) : data(data_in), height(0),
                 left(nullptr), right(nullptr) {
 }
 
-//Node::~Node() = default;
+Node::~Node() {
+    delete this;
+}
 
 void Node::display() const {
     cout <<data <<endl;
@@ -25,7 +27,7 @@ void Node::set_height(int h) {
 }
 
 int Node::get_height() const {
-   if ( this == nullptr )
+   if (this == nullptr)
        return 0;
    else
        return this->height;
