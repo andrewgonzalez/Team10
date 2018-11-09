@@ -9,6 +9,14 @@ Node::Node() : data(0), height(0),
                 left(nullptr), right(nullptr) {
 }
 
+Node::Node(int data_in) : data(data_in), height(0)
+                left(nullptr), right(nullptr) {
+}
+
+void Node::display() {
+    cout <<data <<endl;
+}
+
 void Node::set_height(int h) {
     this->height = h;
 }
@@ -28,11 +36,11 @@ int Node::get_right_height() {
 
 }
 
-Node* Node::go_left() {
+Node *& Node::get_left() {
     return left;
 }
 
-Node* Node::go_right() {
+Node *& Node::get_right() {
     return right;
 }
 

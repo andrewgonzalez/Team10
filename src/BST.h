@@ -23,11 +23,21 @@ public:
     void display_tree(Node c, int indent);
 
     // Display tree in sorted order
+    void inorder();
+
     int add(int data);
+
+private:
+
+    void inorder();
+    int add(Node *&current, int data_in);
+    int destroy_tree(Node *&);
+
 
 protected:
 
     Node * root;
+
 
 };
 

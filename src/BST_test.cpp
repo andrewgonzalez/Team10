@@ -9,8 +9,19 @@ using namespace std;
 
 int main()
 {
-    Node node;
-    node.add(5);
-    node.display();
+    BST bst;
+    bst.add(5);
+    bst.add(4);
+    bst.add(7);
+    bst.add(9);
+    bst.add(2);
+    bst.add(4);
+    bst.add(3);
+    bst.inorder();
+
+
+
+
+
     return 1;
 }
