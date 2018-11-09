@@ -27,4 +27,4 @@ private:
 
 };
 
-#endif BALANCED_TREE_H
+#endif

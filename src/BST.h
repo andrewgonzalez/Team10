@@ -14,7 +14,7 @@ class BST
 public:
 
     BST();
-    ~BST();
+    ~BST() =default;
 
     // Call to display tree
     void display_tree();
@@ -23,13 +23,13 @@ public:
     void display_tree(Node c, int indent);
 
     // Display tree in sorted order
-    void inorder();
+    void inorder() const;
 
     int add(int data);
 
 private:
 
-    void inorder();
+    void inorder(Node *) const;
     int add(Node *&current, int data_in);
     int destroy_tree(Node *&);
 
@@ -41,4 +41,4 @@ protected:
 
 };
 
-#endif BST_H
+#endif

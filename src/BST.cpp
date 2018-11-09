@@ -14,9 +14,10 @@ BST::BST()
 }
 
 // Delete tree
-BST::~BST() {
-    //destroy_tree(root);
+/*BST::~BST() {
+    destroy_tree(root);
 }
+ */
 
 // If !root, return 0 as fail.
 // Postorder traversal to hold open all calls
@@ -24,21 +25,21 @@ BST::~BST() {
 int BST::destroy_tree(Node *& current) {
     if (!current)
         return 0;
-    int sum = destroy_tree(current->go_left()) +
-              destroy_tree(current->go_right()) + 1;
+    int sum = destroy_tree(current->get_left()) +
+              destroy_tree(current->get_right()) + 1;
     delete current;
     current = nullptr;
     return sum;
 }
 
-void BST::inorder() {
+void BST::inorder() const {
     if (root == nullptr)
         return;
-    root->display();
+    cout <<"Sorted order display:\n";
     inorder(root);
 }
 
-void BST::inorder(Node *current) {
+void BST::inorder(Node *current) const {
     if (current == nullptr)
         return;
     inorder(current->get_left());
@@ -65,7 +66,7 @@ int BST::add(Node *&current, int data_in) {
     // equal to the data we want to add, go left.
     // Else, go right.
     if (current->compare(data_in))
-        return insert(current->go_left(), data_in);
+        return add(current->get_left(), data_in);
     if (!current->compare(data_in))
-        return insert(current->go_right(), data_in);
+        return add(current->get_right(), data_in);
 }

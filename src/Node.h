@@ -6,26 +6,31 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <iostream>
+
+using namespace std;
+
 class Node {
 
 public:
 
     Node();
     Node(int data);
+    ~Node() =default;
 
-    void display();
+    void display() const;
 
     void set_height( int h );
-    int get_height();
-    int get_left_height();
-    int get_right_height();
+    int get_height() const;
+    int get_left_height() const;
+    int get_right_height() const;
 
     Node *& get_left();
     Node *& get_right();
 
     bool set_left(Node & to_add);
     bool set_right(Node & to_add);
-    bool compare(int i);
+    bool compare(int data_in);
 
 private:
 
@@ -36,4 +41,4 @@ private:
 
 };
 
-#endif NODE_H
+#endif
