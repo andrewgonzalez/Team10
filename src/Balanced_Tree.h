@@ -14,11 +14,13 @@ public:
     Balanced_Tree();
     ~Balanced_Tree();
 
-    void insert( int num );
-    Node* insert( Node c, int num );
+    void display_tree();
+    void display_tree(Node * current, int indent);
 
-    int max( int a, int b );
+    void insert(int num);
+    Node * insert(Node c, int num);
 
+    int max(int a, int b);
 
 private:
 

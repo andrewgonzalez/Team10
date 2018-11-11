@@ -2,13 +2,14 @@
 // Created by thisSpectre on 11/5/2018.
 //
 
-#include "BST.h"
+#include "Balanced_Tree.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
-    BST bst;
+    Balanced_Tree bst;
+    //BST bst;
     bst.add(5);
     bst.add(4);
     bst.add(7);
@@ -16,7 +17,8 @@ int main() {
     bst.add(2);
     bst.add(4);
     bst.add(3);
-    bst.inorder();
+    bst.display_tree();
+    //bst.inorder();
 
 
     return 1;

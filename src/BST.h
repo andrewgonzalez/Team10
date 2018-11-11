@@ -9,8 +9,7 @@
 #include <iostream>
 
 
-class BST
-{
+class BST {
 public:
 
     BST();
@@ -37,7 +36,6 @@ private:
 protected:
 
     Node * root;
-
 
 };
 

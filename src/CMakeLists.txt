@@ -18,4 +18,5 @@ set(BST_test.cpp)
 #[[Add executable target with source files listed.]]
 add_executable(BST_Test BST_test.cpp
                BST BST.cpp
+               Balanced_Tree Balanced_Tree.cpp
                Node Node.cpp)
