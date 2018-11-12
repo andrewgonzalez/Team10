@@ -26,15 +26,15 @@ public:
     int get_right_height();
 
     int get_balance();
-    bool set_left(Node *& to_add);
-    bool set_right(Node *& to_add);
+    void set_left(Node * to_add);
+    void set_right(Node * to_add);
 
     Node *& get_left();
     Node *& get_right();
 
     // Rotations
     Node & rotate_left();
-    Node & rotate_right();
+    Node *& rotate_right();
 
 
     bool compare(int data_in);

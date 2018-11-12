@@ -53,14 +53,12 @@ int Node::get_balance() {
             this->get_right_height());
 }
 
-bool Node::set_left(Node *& to_add) {
-    left = &to_add;
-    return true;
+void Node::set_left(Node * to_add) {
+    left = to_add;
 }
 
-bool Node::set_right(Node *& to_add) {
-    right = &to_add;
-    return true;
+void Node::set_right(Node * to_add) {
+    right = to_add;
 }
 
 Node *& Node::get_left() {
@@ -80,16 +78,16 @@ Node *& Node::get_right() {
  *          \
  *           c
  */
-Node *& Node::rotate_left() {
+Node & Node::rotate_left() {
     Node * b = this->get_right();
     Node * a = this;
     a->set_right(b->get_left());
     b->set_left(a);
-    a->set_height(max(a.get_left_height(),
-                      a.get_right_height()) + 1);
+    a->set_height(max(a->get_left_height(),
+                      a->get_right_height()) + 1);
     b->set_height(max(b->get_left_height(),
-                      b.get_right_height()) + 1);
-    return b;
+                      b->get_right_height()) + 1);
+    return *b;
 }
 
 /*
