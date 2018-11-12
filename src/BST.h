@@ -19,7 +19,7 @@ public:
     void display_tree();
     // Display like an actual tree
     // Very left is top of tree
-    void display_tree(Node c, int indent);
+    void display_tree(Node * c, int indent);
 
     // Display tree in sorted order
     void inorder() const;

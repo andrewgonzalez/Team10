@@ -24,8 +24,8 @@ public:
     int get_height();
     int get_left_height();
     int get_right_height();
-
     int get_balance();
+
     void set_left(Node * to_add);
     void set_right(Node * to_add);
 
@@ -33,7 +33,8 @@ public:
     Node *& get_right();
 
     // Rotations
-    Node & rotate_left();
+    Node *& rotate_left();
+    //Node *& rotate();
     Node *& rotate_right();
 
 

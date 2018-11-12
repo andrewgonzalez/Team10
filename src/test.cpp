@@ -9,18 +9,12 @@ using namespace std;
 
 int main() {
     Balanced_Tree bst;
-    //BST bst;
-    bst.add(5);
-    //bst.add(4);
-    bst.add(7);
-    bst.add(9);
-    /*bst.add(2);
-    bst.add(4);
-    bst.add(3);
-     */
-    bst.rotate_left();
-
+    bst.insert(3);
+    bst.insert(2);
+    bst.inorder();
+    //bst.insert(1);
     //bst.inorder();
+
 
 
     return 1;

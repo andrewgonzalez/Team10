@@ -29,11 +29,11 @@ int Node::get_height() {
    if (this == nullptr)
        return 0;
    else
-       return height;
+       return this->height;
 }
 
 int Node::get_left_height() {
-    if (this->get_left() = nullptr)
+    if (this->get_left() == nullptr)
         return 0;
     else
         return this->get_left()->get_height();
@@ -46,6 +46,7 @@ int Node::get_right_height() {
         return this->get_right()->get_height();
 }
 
+// Get balance, left->height - right->height
 int Node::get_balance() {
     if (this == nullptr)
         return 0;
@@ -78,35 +79,51 @@ Node *& Node::get_right() {
  *          \
  *           c
  */
-Node & Node::rotate_left() {
+Node *& Node::rotate_left() {
     Node * b = this->get_right();
     Node * a = this;
     a->set_right(b->get_left());
     b->set_left(a);
     a->set_height(max(a->get_left_height(),
-                      a->get_right_height()) + 1);
+                         a->get_right_height()) + 1);
     b->set_height(max(b->get_left_height(),
-                      b->get_right_height()) + 1);
-    return *b;
+                          b->get_right_height()) + 1);
+    return b;
 }
+
+/*
+Node *& Node::rotate() {
+    return rotate_left(this);
+}
+ */
 
 /*
  *  Rotate right
  *  In a diagram:
  *        c                     b
  *       /                    /   \
- *      b       becomes...   a     d
+ *      b       becomes...   a     c
  *     /
  *    a
  */
 Node *& Node::rotate_right() {
-
+    Node * b = this->get_left();
+    Node * c = this;
+    c->set_left(b->get_right());
+    b->set_right(c);
+    b->set_height(max(b->get_left_height(),
+                      b->get_right_height()) + 1);
+    c->set_height(max(c->get_left_height(),
+                          get_right_height()) + 1);
+    return b;
 }
 
 // Compare data to be inserted to data in tree
-// if ( data_in >= this.data ) ? true : false;
+// if (this->data >= data_in) ? true : false;
+// True means we want to traverse left.
+// False means we want to traverse right.
 bool Node::compare(int data_in) {
-    return data_in < data || data_in == data;
+    return this->data > data_in || this->data == data_in;
 }
 
 int Node::get_int() {
