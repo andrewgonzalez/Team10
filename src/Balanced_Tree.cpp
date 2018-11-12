@@ -64,6 +64,9 @@ Node *& Balanced_Tree::insert(Node *& c, int data_in) {
     // Left Right case
 
     // Right Left case
+
+    // Return current to last function call to connect tree
+    return c;
 }
 
 // Used to compare balance of particular node

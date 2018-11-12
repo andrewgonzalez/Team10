@@ -12,8 +12,8 @@ int main() {
     bst.insert(3);
     bst.insert(2);
     bst.inorder();
-    //bst.insert(1);
-    //bst.inorder();
+    bst.insert(1);
+    bst.inorder();
 
 
 
