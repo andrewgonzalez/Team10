@@ -16,6 +16,11 @@ Balanced_Tree::~Balanced_Tree() {
 
 }
 
+// Test
+void Balanced_Tree::rotate_left() {
+    root = &root->rotate_left();
+}
+
 // Wrapper to call recursive display
 void Balanced_Tree::display_tree() {
     if (root == nullptr)

@@ -14,6 +14,8 @@ public:
     Balanced_Tree();
     ~Balanced_Tree();
 
+    void rotate_left();
+
     void display_tree();
     void display_tree(Node * current, int indent);
 
