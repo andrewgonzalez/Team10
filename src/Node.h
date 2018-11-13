@@ -20,4 +20,4 @@ private:
     Node * left;
     Node * right;
 };
-#endif NODE_H
+#endif //NODE_H

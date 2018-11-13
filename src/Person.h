@@ -14,8 +14,10 @@ using namespace std;
 class Person : public Node {
 public:
     Person();
-    Person(int id, int phone, int zip,
-            string & name, string & address, string & city, string & state);
+    /*Person(int id, int phone, int zip,
+            string & name, string & address, string & city, string & state);*/
+    Person(int id, int zip, string & name, string & address,
+            string & city, string & state);
     Person(const Person& copyFrom);
     ~Person() override;
     virtual void display();
@@ -23,7 +25,7 @@ public:
     void setReport();  // what are we doing with this?
 private:
     int ID;                 // 9 digits
-    int phoneNumber;        // 10 digits
+    //int phoneNumber;        // 10 digits
     int zipcode;            // 5 digits
     string name;     // 25 characters
     string address;  // 25 characters
@@ -32,4 +34,4 @@ private:
 };
 
 
-#endif PERSON_H
+#endif //PERSON_H
