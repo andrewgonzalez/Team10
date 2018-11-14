@@ -33,10 +33,9 @@ public:
     Node *& get_right();
 
     // Rotations
-    Node *& rotate_left();
+    Node * rotate_left(Node *& c);
     //Node *& rotate();
-    Node *& rotate_right();
-
+    Node * rotate_right(Node *& c);
 
     bool compare(int data_in);
     int get_int();

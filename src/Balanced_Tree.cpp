@@ -56,14 +56,24 @@ Node *& Balanced_Tree::insert(Node *& c, int data_in) {
     this->balance = c->get_balance();
 
     // Left Left case
-    if (this->balance > 1 && c->compare(data_in))
-        return c->rotate_right();
+    if (this->balance > 1 && c->get_left()->compare(data_in))
+        c = c->rotate_right(c);
 
     // Right Right case
+    if (this->balance < -1 && !c->get_right()->compare(data_in))
+        c = c->rotate_left(c);
 
     // Left Right case
+    if (this->balance > 1 && !c->get_left()->compare(data_in)) {
+        c->set_left(c->get_left()->rotate_left());
+        c = c-> rotate_right();
+    }
 
     // Right Left case
+    if (this->balance < -1 && c->get_right()->compare(data_in)) {
+        c->set_right(c->get_right()->rotate_right());
+        c = c->rotate_left();
+    }
 
     // Return current to last function call to connect tree
     return c;

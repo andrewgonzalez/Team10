@@ -79,9 +79,9 @@ Node *& Node::get_right() {
  *          \
  *           c
  */
-Node *& Node::rotate_left() {
+Node * Node::rotate_left(Node *& a) {
     Node * b = this->get_right();
-    Node * a = this;
+    a = this;
     a->set_right(b->get_left());
     b->set_left(a);
     a->set_height(max(a->get_left_height(),
@@ -106,9 +106,9 @@ Node *& Node::rotate() {
  *     /
  *    a
  */
-Node *& Node::rotate_right() {
+Node * Node::rotate_right(Node *& c) {
     Node * b = this->get_left();
-    Node * c = this;
+    c = this;
     c->set_left(b->get_right());
     b->set_right(c);
     b->set_height(max(b->get_left_height(),

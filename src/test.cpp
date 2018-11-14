@@ -9,10 +9,10 @@ using namespace std;
 
 int main() {
     Balanced_Tree bst;
-    bst.insert(3);
+    bst.insert(1);
     bst.insert(2);
     bst.inorder();
-    bst.insert(1);
+    bst.insert(3);
     bst.inorder();
 
 
