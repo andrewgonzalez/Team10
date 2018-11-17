@@ -18,49 +18,10 @@ BST::~BST() {
     destroy_tree(root);
 }
 
-// Wrapper to call recursive display
-void BST::display_tree() {
-    if (root == nullptr)
-        return;
-    display_tree(root, 0);
-}
-
-// Recursive function to display BST like an
-// actual tree. Greatest value is at the left.
-void BST::display_tree(Node * current, int indent) {
-    // 'i' for 'for' loops
-    int i;
-    if (current != nullptr){
-        if (current->get_right() != nullptr)
-            display_tree(current->get_right(), indent + 1);
-        if (indent > 0) {
-            for (i = 0; i < indent; ++i)
-                cout <<endl;
-            cout <<" ";
-        }
-        if (current->get_right() != nullptr){
-            cout <<" /";
-            for (i = 0; i < indent; ++i) {
-                cout << "\t";
-            }
-            cout <<" ";
-        }
-        cout <<current->get_int();
-        if (current->get_left() != nullptr) {
-            for (i = 0; i < indent; ++i) {
-                cout <<"\t";
-            }
-            cout <<" ";
-            cout <<" \\\n";
-            display_tree(current->get_left(), indent + 1);
-        }
-    }
-}
-
 // If !root, return 0 as fail.
 // Postorder traversal to hold open all calls
 // and delete as they are collapsed.
-int BST::destroy_tree(Node *& current) {
+int BST::destroy_tree(tNode *& current) {
     if (!current)
         return 0;
     int sum = destroy_tree(current->get_left()) +
@@ -70,34 +31,41 @@ int BST::destroy_tree(Node *& current) {
     return sum;
 }
 
-void BST::inorder() const {
+int BST::inorder() const {
     if (root == nullptr)
-        return;
+        return 0;
     cout <<"Sorted order display:\n";
-    inorder(root);
+    return inorder(root);
 }
 
-void BST::inorder(Node *current) const {
+int BST::inorder(tNode *current) const {
     if (current == nullptr)
-        return;
-    inorder(current->get_left());
+        return 0;
+    int i = inorder(current->get_left()) +1;
     current->display();
-    inorder(current->get_right());
+    return inorder(current->get_right()) +i;
 }
 
-int BST::add(int data_in) {
-    if (!root) {
-        root = new Node(data_in);
-        return 1;
-    }
-    add(root, data_in);
+bool BST::find(int to_find) const {
+    return find(root, to_find);
 }
 
-int BST::add(Node *&current, int data_in) {
+bool BST::find(tNode * current, int to_find) const {
+    if (current == nullptr)
+        return false;
+    if (*current == to_find)
+        return true;
+    if (*current <= to_find)
+        return find(current->get_left(), to_find);
+    else
+        return find(current->get_right(), to_find);
+}
+
+int BST::add(tNode *&current, int data_in) {
     // When we've reached the insert position, create
     // a new node.
     if (!current) {
-        current = new Node(data_in);
+        current = new tNode(data_in);
         return 1;
     }
     // If what's inside the node in the tree is greater or
@@ -108,3 +76,4 @@ int BST::add(Node *&current, int data_in) {
     if (!current->compare(data_in))
         return add(current->get_right(), data_in);
 }
+

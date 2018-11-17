@@ -19,4 +19,4 @@ set(test.cpp)
 add_executable(Test test.cpp
                BST BST.cpp
                Balanced_Tree Balanced_Tree.cpp
-               Node Node.cpp)
+               tNode tNode.cpp)

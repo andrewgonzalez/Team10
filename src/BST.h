@@ -5,7 +5,7 @@
 #ifndef BST_H
 #define BST_H
 
-#include "Node.h"
+#include "tNode.h"
 #include <iostream>
 
 
@@ -15,27 +15,25 @@ public:
     BST();
     ~BST();
 
-    // Call to display tree
-    void display_tree();
-    // Display like an actual tree
-    // Very left is top of tree
-    void display_tree(Node * c, int indent);
-
     // Display tree in sorted order
-    void inorder() const;
+    int inorder() const;
+
+    // Find match
+    bool find(int) const;
 
     int add(int data);
 
 private:
 
-    void inorder(Node *) const;
-    int add(Node *&current, int data_in);
-    int destroy_tree(Node *&);
+    int inorder(tNode *) const;
+    bool find(tNode *, int) const;
+    int add(tNode *&current, int data_in);
+    int destroy_tree(tNode *&);
 
 
 protected:
 
-    Node * root;
+    tNode * root;
 
 };
 

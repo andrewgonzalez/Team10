@@ -14,17 +14,16 @@ public:
     Balanced_Tree();
     ~Balanced_Tree();
 
-    void rotateLeft();
-
     void insert(int num);
 
     int max(int a, int b);
 
 private:
-    Node *& insert(Node *& c, int num);
+
+    tNode * insert(tNode *& c, int num);
 
     // Keep track of balance for Balanced_Tree.
-    // If balance > 1, we will need to rotate.
+    // If balance > 1 || < -1, we will need to rotate.
     int balance;
 
 };

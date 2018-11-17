@@ -16,32 +16,27 @@ Balanced_Tree::~Balanced_Tree() {
 
 }
 
-/*
-// Test
-void Balanced_Tree::rotateLeft() {
-    this->root = this->root->rotate_left();
-}
- */
-
-
+// Wrapper for our recursive call
 void Balanced_Tree::insert(int data_in) {
     root = insert(root, data_in);
 }
 
 // 'c' for current
-Node *& Balanced_Tree::insert(Node *& c, int data_in) {
+tNode * Balanced_Tree::insert(tNode *& c, int data_in) {
 
     // Create new node
     if (c == nullptr) {
-        c = new Node(data_in);
+        c = new tNode(data_in);
         return c;
     }
 
-    // Compare node data. If passed in data < this data)
+    // Compare node data. If passed in data < this data
     // go left. Else go right.
-    // bool compare(data_in) {
-    // if (this->data >= data_in) ? true : false;}
-    if (c->compare(data_in))
+    if (*c == data_in){
+        cout <<"This integer is already in the database. Try again." <<endl;
+        return c;
+    }
+    if (*c > data_in)
         c->set_left(insert(c->get_left(), data_in));
     else
         c->set_right(insert(c->get_right(), data_in));
@@ -56,31 +51,26 @@ Node *& Balanced_Tree::insert(Node *& c, int data_in) {
     this->balance = c->get_balance();
 
     // Left Left case
-    if (this->balance > 1 && c->get_left()->compare(data_in)) {
+    if (this->balance > 1 && *c->get_left() > data_in) {
         c = c->rotate_right(c);
-        return c;
     }
 
     // Right Right case
-    if (this->balance < -1 && !c->get_right()->compare(data_in)) {
+    if (this->balance < -1 && *c->get_right() < data_in) {
         c = c->rotate_left(c);
-        return c;
     }
 
     // Left Right case
-    if (this->balance > 1 && !c->get_left()->compare(data_in)) {
-        //c->set_left(c->get_left()->rotate_left());
-        c->get_left() = c->rotate_left(c->get_left());
-        c = c->rotate_right(c);
-        return c;
+    // Perform left rotation on c->left
+    // Then right rotation on c->left
+    if (this->balance > 1 && *c->get_left() < data_in) {
+        c = c->lr_rotate(c);
     }
 
     // Right Left case
-    if (this->balance < -1 && c->get_right()->compare(data_in)) {
-        //c->set_right(c->get_right()->rotate_right());
-        c->get_right() = c->rotate_right(c->get_right());
-        c = c->rotate_left(c);
-        return c;
+    //if (this->balance < -1 && c->get_right()->compare(data_in)) {
+    if (this->balance < -1 && *c->get_right() > data_in) {
+        c = c->rl_rotate(c);
     }
 
     // Return current to last function call to connect tree
