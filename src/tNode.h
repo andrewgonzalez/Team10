@@ -36,15 +36,13 @@ public:
     tNode *& get_right();
 
     // Rotations
-    //tNode * rotate_left(tNode *& c);
     tNode * rotate_left(tNode *& current);
-    //tNode *& rotate();
     tNode * rotate_right(tNode *& current);
     tNode * lr_rotate(tNode *&);
     tNode * rl_rotate(tNode *&);
 
+    // Comparison functions
     bool compare(int data_in);
-    int compare(char *);
     tNode& operator = (tNode&);
     bool operator < (tNode&) const;
     bool operator > (tNode&) const;
@@ -54,10 +52,6 @@ public:
     bool operator > (int) const;
     bool operator <= (int) const;
     bool operator == (int) const;
-    bool operator < (char*) const;
-    bool operator > (char*) const;
-    bool operator <= (char*) const;
-    bool operator == (char*) const;
     int get_int();
 
 private:

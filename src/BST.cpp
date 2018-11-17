@@ -31,6 +31,7 @@ int BST::destroy_tree(tNode *& current) {
     return sum;
 }
 
+// Inorder display of the BST
 int BST::inorder() const {
     if (root == nullptr)
         return 0;
@@ -46,6 +47,7 @@ int BST::inorder(tNode *current) const {
     return inorder(current->get_right()) +i;
 }
 
+// Takes an int as an argument and finds it in the BST
 bool BST::find(int to_find) const {
     return find(root, to_find);
 }
@@ -55,12 +57,13 @@ bool BST::find(tNode * current, int to_find) const {
         return false;
     if (*current == to_find)
         return true;
-    if (*current <= to_find)
-        return find(current->get_left(), to_find);
-    else
+    if (*current < to_find)
         return find(current->get_right(), to_find);
+    else
+        return find(current->get_left(), to_find);
 }
 
+// This is not a balancing add function
 int BST::add(tNode *&current, int data_in) {
     // When we've reached the insert position, create
     // a new node.

@@ -130,6 +130,7 @@ tNode * tNode::rl_rotate(tNode *& top) {
     return rotate_left(top);
 }
 
+// NOT USED
 // Compare data to be inserted to data in tree
 // if (this->data >= data_in) ? true : false;
 // True means we want to traverse left.

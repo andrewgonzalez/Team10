@@ -68,7 +68,6 @@ tNode * Balanced_Tree::insert(tNode *& c, int data_in) {
     }
 
     // Right Left case
-    //if (this->balance < -1 && c->get_right()->compare(data_in)) {
     if (this->balance < -1 && *c->get_right() > data_in) {
         c = c->rl_rotate(c);
     }
