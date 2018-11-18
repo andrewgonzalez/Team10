@@ -33,3 +33,5 @@
 
 # IDE config files
 **/.idea
+
+*.xml
