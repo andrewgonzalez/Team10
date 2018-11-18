@@ -34,7 +34,7 @@ void Terminal::login_menu()
   cout<<"\n\tPlease input your ID:";
   //call validate function,and return the user type:0-member(invalid);1-provider;2-manager;
   int type;
-  cin>>type;
+  cin>>type;//this is just for testing
   switch(type)
   {
     case 1: provider_menu(); break;
