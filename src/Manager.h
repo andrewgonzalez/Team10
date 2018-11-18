@@ -16,4 +16,4 @@ private:
 };
 
 
-#endif MANAGER_H
+#endif //MANAGER_H

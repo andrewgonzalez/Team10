@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif MEMBER_H
+#endif //MEMBER_H

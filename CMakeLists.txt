@@ -35,6 +35,17 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-add_executable(Team10 src/person_test.cpp src/Node.cpp src/Person.cpp)
+add_executable(Team10
+        src/person_test.cpp
+        src/Node.cpp
+        src/Person.cpp
+        src/BST_test.cpp
+        src/BST.cpp
+        src/Balanced_Tree.cpp
+        src/tNode.cpp)
+#add_executable(BST_test src/BST_test.cpp
+#        BST src/BST.cpp
+#        Balanced_Tree src/Balanced_Tree.cpp
+#        tNode src/tNode.cpp)
 target_link_libraries(Team10 gtest_main)
 add_test(NAME PersonTest COMMAND DefaultConstructor)
