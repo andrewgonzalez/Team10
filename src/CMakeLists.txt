@@ -12,11 +12,11 @@ set(CMAKE_CXX_STANDARD 14)              # Enable C++14 standard
 
 #[[Add main.cpp file of project root directory as source file]]
 
-set(test.cpp)
+set(BST_test.cpp)
 
 
 #[[Add executable target with source files listed.]]
-add_executable(Test test.cpp
+add_executable(BST_test BST_test.cpp
                BST BST.cpp
                Balanced_Tree Balanced_Tree.cpp
                tNode tNode.cpp)
