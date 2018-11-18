@@ -19,7 +19,7 @@ using namespace std;
 
 int main() {
 
-    // Variable with arbitrary int to hold or ignore input.
+    // Variable with arbitrary int to hold or ignore input
     int MAX = 100;
 
     Balanced_Tree bst;
