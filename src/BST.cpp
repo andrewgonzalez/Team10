@@ -77,7 +77,7 @@ int BST::add(tNode *&current, int data_in) {
     // Else, go right.
     if (current->compare(data_in))
         return add(current->get_left(), data_in);
-    if (!current->compare(data_in))
+    else
         return add(current->get_right(), data_in);
 }
 

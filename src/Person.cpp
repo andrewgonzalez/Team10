@@ -36,10 +36,6 @@ Person::Person(const Person& copyFrom) : tNode(copyFrom) {
 }
 
 
-// Person class destructor.
-Person::~Person() = default;
-
-
 // Print Person data members to the standard output.
 // Input: none
 // Output: void
