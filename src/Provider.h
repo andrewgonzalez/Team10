@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif PROVIDER_H
+#endif //PROVIDER_H
