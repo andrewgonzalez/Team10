@@ -48,7 +48,7 @@ add_executable(Team10
         src/Provider.cpp
         src/provider_service.cpp
         src/service.cpp
-        src/Terminal.cpp)
+        src/Terminal.cpp src/Controller.cpp src/Controller.h)
 
 target_link_libraries(Team10 gtest_main)
 add_test(NAME PersonTest COMMAND DefaultConstructor)

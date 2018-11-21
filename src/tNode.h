@@ -17,9 +17,9 @@ class tNode {
 public:
 
     tNode();
-    tNode(int data);
+    explicit tNode(int data);
     tNode(const tNode & copyFrom);
-    ~tNode();
+    virtual ~tNode() = default;
 
     void display() const;
 
@@ -43,11 +43,11 @@ public:
 
     // Comparison functions
     bool compare(int data_in);
-    tNode& operator = (tNode&);
-    bool operator < (tNode&) const;
-    bool operator > (tNode&) const;
-    bool operator <= (tNode&) const;
-    bool operator == (tNode&) const;
+    tNode& operator = (const tNode&);
+    bool operator < (const tNode&) const;
+    bool operator > (const tNode&) const;
+    bool operator <= (const tNode&) const;
+    bool operator == (const tNode&) const;
     bool operator < (int) const;
     bool operator > (int) const;
     bool operator <= (int) const;

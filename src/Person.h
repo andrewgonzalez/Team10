@@ -17,7 +17,7 @@ public:
     Person(int id, int zip, string & name, string & address,
             string & city, string & state);
     Person(const Person& copyFrom);
-    ~Person() override;
+    ~Person() override = default;
     virtual void display();
     void setReport();  // what are we doing with this?
 private:

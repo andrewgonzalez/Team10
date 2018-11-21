@@ -37,8 +37,7 @@ Person::Person(const Person& copyFrom) : tNode(copyFrom) {
 
 
 // Person class destructor.
-Person::~Person() {
-}
+Person::~Person() = default;
 
 
 // Print Person data members to the standard output.
@@ -46,7 +45,6 @@ Person::~Person() {
 // Output: void
 void Person::display() {
     cout << name << endl;
-    //cout << "Phone#: " << phoneNumber << endl;
     cout << address << endl;
     cout << city << ", " << state << endl;
     cout << zipcode << endl;

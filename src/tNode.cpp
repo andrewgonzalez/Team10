@@ -20,8 +20,7 @@ tNode::tNode(const tNode & copyFrom) : data(copyFrom.data), height(copyFrom.heig
     left(copyFrom.left), right(copyFrom.right) {
 }
 
-tNode::~tNode() {
-}
+tNode::~tNode() = default;
 
 void tNode::display() const {
     cout <<data <<endl;
@@ -139,7 +138,7 @@ tNode * tNode::rl_rotate(tNode *& top) {
 // if (this->data >= data_in) ? true : false;
 // True means we want to traverse left.
 // False means we want to traverse right.
-bool tNode::compare(int data_in) {
+bool tNode::compare(const int data_in) {
     return this->data > data_in || this->data == data_in;
 }
 
@@ -177,28 +176,20 @@ bool tNode::operator == (tNode & to_compare) const {
 }
  */
 
-bool tNode::operator < (int to_compare) const {
-    if (this->data < to_compare)
-        return true;
-    return false;
+bool tNode::operator < (const int to_compare) const {
+    return data < to_compare;
 }
 
-bool tNode::operator > (int to_compare) const {
-    if (this->data > to_compare)
-        return true;
-    return false;
+bool tNode::operator > (const int to_compare) const {
+    return data > to_compare;
 }
 
-bool tNode::operator <= (int to_compare) const {
-    if (this->data <= to_compare)
-        return true;
-    return false;
+bool tNode::operator <= (const int to_compare) const {
+    return data <= to_compare;
 }
 
-bool tNode::operator == (int to_compare) const {
-    if (this->data == to_compare)
-        return true;
-    return false;
+bool tNode::operator == (const int to_compare) const {
+    return data == to_compare;
 }
 
 int tNode::get_int() {
