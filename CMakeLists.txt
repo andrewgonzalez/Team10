@@ -36,16 +36,19 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 add_executable(Team10
-        src/person_test.cpp
-        src/Node.cpp
+        src/main.cpp
+        #src/person_test.cpp
         src/Person.cpp
-        src/BST_test.cpp
+        #src/BST_test.cpp
         src/BST.cpp
         src/Balanced_Tree.cpp
-        src/tNode.cpp)
-#add_executable(BST_test src/BST_test.cpp
-#        BST src/BST.cpp
-#        Balanced_Tree src/Balanced_Tree.cpp
-#        tNode src/tNode.cpp)
+        src/tNode.cpp
+        src/Member.cpp
+        src/member_service.cpp
+        src/Provider.cpp
+        src/provider_service.cpp
+        src/service.cpp
+        src/Terminal.cpp)
+
 target_link_libraries(Team10 gtest_main)
 add_test(NAME PersonTest COMMAND DefaultConstructor)

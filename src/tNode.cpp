@@ -16,6 +16,10 @@ tNode::tNode(int data_in) : data(data_in), height(1),
                 left(nullptr), right(nullptr) {
 }
 
+tNode::tNode(const tNode & copyFrom) : data(copyFrom.data), height(copyFrom.height),
+    left(copyFrom.left), right(copyFrom.right) {
+}
+
 tNode::~tNode() {
 }
 

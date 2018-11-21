@@ -18,7 +18,7 @@ public:
 
     tNode();
     tNode(int data);
-    tNode(char *data);
+    tNode(const tNode & copyFrom);
     ~tNode();
 
     void display() const;
