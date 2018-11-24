@@ -63,7 +63,6 @@ bool BST::find(tNode * current, int to_find) const {
         return find(current->get_left(), to_find);
 }
 
-//TODO: rewrite so there is no compiler warning about "reaching end of non-void function"
 // This is not a balancing add function
 int BST::add(tNode *&current, int data_in) {
     // When we've reached the insert position, create
