@@ -12,22 +12,36 @@
 using namespace std;
 
 class Person : public tNode {
+
 public:
+
     Person();
     Person(int id, int zip, string & name, string & address,
             string & city, string & state);
-    Person(const Person& copyFrom);
-    ~Person() override;
+    /*
+    // Used to initialize with string literals in args
+    Person(int id, int zip, string name, string address,
+            string city, string state);
+    */
+    Person(const Person & copy_from);
+    Person(const Person * copy_from);
+    //~Person() override = default;
+    virtual ~Person();
+
     virtual void display() const;
-    void setReport();  // what are we doing with this?
+    void edit_state(string &);
+    void setReport();   // what are we doing with this?
+
 private:
-    int ID;                 // 9 digits
-    int zipcode;            // 5 digits
-    string name;     // 25 characters
-    string address;  // 25 characters
-    string city;     // 14 characters
-    string state;    // 2 characters
+
+    int ID;             // 9 digits
+    int zipcode;        // 5 digits
+    string name;        // 25 characters
+    string address;     // 25 characters
+    string city;        // 14 characters
+    string state;       // 2 characters
+
 };
 
 
-#endif //PERSON_H
+#endif

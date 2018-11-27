@@ -13,33 +13,31 @@ Balanced_Tree::Balanced_Tree() {
 }
 
 Balanced_Tree::~Balanced_Tree() {
-
 }
 
 // Wrapper for our recursive call
-void Balanced_Tree::insert(int data_in) {
-    root = insert(root, data_in);
+void Balanced_Tree::insert(int id, Person * to_add) {
+    root = insert(root, id, to_add);
 }
 
-// 'c' for current
-tNode * Balanced_Tree::insert(tNode *& c, int data_in) {
+tNode * Balanced_Tree::insert(tNode *& c, int id, Person * to_add) {
 
-    // Create new node
+    // Connect up
     if (c == nullptr) {
-        c = new tNode(data_in);
+        c = to_add;
         return c;
     }
 
     // Compare node data. If passed in data < this data
     // go left. Else go right.
-    if (*c == data_in){
+    if (*c == id){
         cout <<"This integer is already in the database. Try again." <<endl;
         return c;
     }
-    if (*c > data_in)
-        c->set_left(insert(c->get_left(), data_in));
+    if (*c > id)
+        c->set_left(insert(c->get_left(), id, to_add));
     else
-        c->set_right(insert(c->get_right(), data_in));
+        c->set_right(insert(c->get_right(), id, to_add));
 
     // Set height of c. Return the greater height of the
     // left or right child + 1. Add one because we are
@@ -51,24 +49,24 @@ tNode * Balanced_Tree::insert(tNode *& c, int data_in) {
     this->balance = c->get_balance();
 
     // Left Left case
-    if (this->balance > 1 && *c->get_left() > data_in) {
+    if (this->balance > 1 && *c->get_left() > id) {
         c = c->rotate_right(c);
     }
 
     // Right Right case
-    if (this->balance < -1 && *c->get_right() < data_in) {
+    if (this->balance < -1 && *c->get_right() < id) {
         c = c->rotate_left(c);
     }
 
     // Left Right case
     // Perform left rotation on c->left
     // Then right rotation on c->left
-    if (this->balance > 1 && *c->get_left() < data_in) {
+    if (this->balance > 1 && *c->get_left() < id) {
         c = c->lr_rotate(c);
     }
 
     // Right Left case
-    if (this->balance < -1 && *c->get_right() > data_in) {
+    if (this->balance < -1 && *c->get_right() > id) {
         c = c->rl_rotate(c);
     }
 
@@ -76,7 +74,8 @@ tNode * Balanced_Tree::insert(tNode *& c, int data_in) {
     return c;
 }
 
-// Used to compare balance of particular node
+// Used to compare balance of particular node.
+// Return the greatest of the two args.
 int Balanced_Tree::max(int a, int b) {
     return a > b ? a : b;
 }

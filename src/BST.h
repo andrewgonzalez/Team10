@@ -6,30 +6,26 @@
 #define BST_H
 
 #include "tNode.h"
+#include "Person.h"
 #include <iostream>
 
-
 class BST {
+
 public:
 
     BST();
     ~BST();
 
-    // Display tree in sorted order
-    int inorder() const;
+    int inorder() const;        // Display tree in sorted order
 
-    // Find match
-    bool find(int) const;
-
-    int add(int data);
+    tNode * find(int);          // Find match
 
 private:
 
     int inorder(tNode *) const;
-    bool find(tNode *, int) const;
-    int add(tNode *&current, int data_in);
-    int destroy_tree(tNode *&);
+    tNode * find(tNode *, int);
 
+    int destroy_tree(tNode *&);
 
 protected:
 
