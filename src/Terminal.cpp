@@ -35,6 +35,7 @@ void Terminal::login_menu()
   //call validate function,and return the user type:0-member(invalid);1-provider;2-manager;
   int type;
   cin>>type;//this is just for testing
+  cin.ignore(100, '\n');
   switch(type)
   {
     case 1: provider_menu(); break;
@@ -54,12 +55,13 @@ void Terminal::provider_menu()
     cout<<"\n\t|                                         |";
     cout<<"\n\t|          (p)rovide service to member    |";//call the function that to validate member ID and select service and comment and record;
     cout<<"\n\t|          (r)equest provider directory   |";//call the function that to search services or display all services;
-    cout<<"\n\t|          (m)anage member                |";//go to operator menu;
+    //cout<<"\n\t|          (m)anage member                |";//go to operator menu;
     cout<<"\n\t|          (w)eekly report                |";//call the function taht to generate member report or provider report;
     cout<<"\n\t|          (q)uit                         |";//quit from software;
     cout<<"\n\t-------------------------------------------\n\n\t";
   
     cin>>P_menu_choice;
+    cin.ignore(100, '\n');
 // add according function later to each case;
 
     switch(P_menu_choice[0])
@@ -68,7 +70,7 @@ void Terminal::provider_menu()
 
       case 'r':cout<<"\n\tr"; break;
 
-      case 'm':operator_menu() ; break;
+      //case 'm':operator_menu() ; break;
 
       case 'w':cout<<"\n\treport"/*report_menu()*/ ; break;
 
@@ -93,15 +95,22 @@ void Terminal::manager_menu()
     cout<<"\n\t------------------------------------------\n\n\t"; 
     
     cin>>M_menu_choice;
+    cin.ignore(100, '\n');
 // add according function later to each case;
 
     switch(M_menu_choice[0])
     {
-      case 'm': manager_operator_menu(); break;
+      case 'm':
+        manager_operator_menu();
+        break;
 
-      case 'r': cout<<"\n\tReport"; break;
+      case 'r':
+        cout<<"\n\tReport";
+        break;
 
-      case 'q': cout<<"\n\tExiting Manager menu";
+      case 'q':
+        cout<<"\n\tExiting Manager menu";
+        break;
 
       default : cout<<"\n\t Invalid input!";break;
     }
@@ -123,6 +132,7 @@ void Terminal::operator_menu()
         cout<<"\n\t-----------------------------------------------\n\n\t"; 
 
       cin>>O_menu_choice;
+      cin.ignore(100, '\n');
 // add according function later to each case;
 
       switch(O_menu_choice[0])
@@ -142,7 +152,9 @@ void Terminal::operator_menu()
 }
 
 void Terminal::manager_operator_menu()
-{ 
+{
+    int ID;
+    tNode* found;
     char MO_menu_choice[10];
     while(MO_menu_choice[0]!='b')
     {
@@ -160,11 +172,21 @@ void Terminal::manager_operator_menu()
       cout<<"\n\t-----------------------------------------------\n\n\t"; 
 
       cin>>MO_menu_choice;
+      cin.ignore(100, '\n');
 
 // add according function later to each case;
       switch(MO_menu_choice[0])
       {
-        case 's':cout<<"\n\ts";break;
+        case 's':
+          //cout<<"\n\ts";
+          ID = enterID();
+          found = controller.findPerson(0, ID);
+          if (found) {
+            cout << "Member found:" << endl;
+            found->display();
+          } else
+            cout << "Member not found!" << endl;
+          break;
 
         case 'a':cout<<"\n\ta";break;
 
@@ -190,7 +212,18 @@ void Terminal::manager_operator_menu()
 }
 
 
-
+int Terminal::enterID() {
+  int ID = -1;
+  cout << "Please enter the user ID: ";
+  cin >> ID;
+  if (!cin || cin.fail()) {
+    cout << "Invalid input. Please try again." << endl;
+    cin.clear();
+    cin.ignore(100, '\n');
+    return -1;
+  }
+  return ID;
+}
 
 
 

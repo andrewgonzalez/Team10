@@ -7,9 +7,18 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include <iostream>
+#include "Balanced_Tree.h"
+
 class Controller {
-    //TODO: fill this class in
+public:
     Controller();
-    ~Controller() = default;
+    ~Controller();
+    tNode* findPerson(int tree, int ID);
+private:
+    // 0 is Member's tree
+    // 1 is Provider's tree
+    // 2 is Manager's tree
+    Balanced_Tree people[3];
 };
 #endif //CONTROLLER_H

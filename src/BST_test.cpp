@@ -1,171 +1,145 @@
-//
-// Created by Miguel on 11/5/2018.
-//
-// To try a test, add '/' to the '/*' under each title.
-// Make sure to remove a '/' from the '//*' under an
-// uncommented-out test or else it may not compile.
-//
-// If you are confused, take a look at this webpage:
-// https://coderwall.com/p/zbc2zw/the-comment-toggle-trick
-//
-
+/*
+ * This is a file mainly for testing. When using ifstream::open,
+ * make sure to change the file path to the correct path on your
+ * machine. ifstream::open is used in the build functions.
+ */
 
 #include "Balanced_Tree.h"
-#include <iostream>
-#include <stdlib.h>             // For rand() function
-#include <time.h>               // For rand()'s seed
+#include <fstream>              // for reading from file
+#include <ios>                  // for eof()
 
 using namespace std;
 
-int main() {
+const int MAX = 100;
+int build_memberBST(Balanced_Tree&);
+int build_providerBST(Balanced_Tree&);
+int build_managerBST(Balanced_Tree&);
+void display_members(Balanced_Tree&);
 
-    // Variable with arbitrary int to hold or ignore input
-    int MAX = 100;
+int main()
+{
+    Balanced_Tree member_bst;
+    build_memberBST(member_bst);
+    display_members(member_bst);
 
-    Balanced_Tree bst;
+    // Check to make sure we have found a match. If not,
+    // to_edit will be a nullptr.
 
-    // LL case
-    /*
-    bst.insert(3);
-    bst.insert(2);
-    bst.insert(1);
-    //*/
+    int num;
+    tNode *to_edit;
+    do {
 
-    // RR case
-    /*
-    bst.insert(1);
-    bst.insert(2);
-    bst.insert(3);
-    //*/
+        cout <<"Please enter an ID number to find: ";
+        // ID number of member we want to find and edit
+        cin >>num;
 
-    // LR case
-    /*
-    bst.insert(3);
-    bst.insert(1);
-    bst.insert(2);
-    //*/
+        // BST::find(int) returns a tNode
+        to_edit = member_bst.find(num);
 
-    // RL case
-    /*
-    bst.insert(1);
-    bst.insert(3);
-    bst.insert(2);
-    //*/
+        // Display our found tNode to make sure we have the right one
+        cout <<"Searching for ID " <<num <<":" <<endl;
 
-    // Add any number of random numbers to tree
-    /*
-    int i, n;
-    srand (time(NULL));
-    n = rand() % 100;
-    for (i = 0; i < 10; ++i) {
-        cout <<n << ", ";
-        bst.insert(n);
-        n = rand() % 100;
-    }
-    cout <<"; Number of integers: " <<i <<endl;
-    cout << "Number of integers in BST: " <<bst.inorder();
-    //*/
+        if (!to_edit)
+            cout <<num <<" was not found" <<endl;
 
-    // Add chosen number of ints to tree
-    /*
-    int i, j, n;
-    cout <<"How many integers would you like to input? ";
-    cin >>j;
-    cin.ignore(MAX, '\n');
-    for (i = 0; i < j; ++i) {
-        cout <<"Enter int: ";
-        cin >>n;
-        cin.ignore(MAX, '\n');
-        bst.insert(n);
-    }
-    cout << "Number of integers in BST: " <<bst.inorder();
-    //*/
+    } while (!to_edit);
+    to_edit->display();
 
-    // Add any number of integers and find
-    //*
-    int i, n;
-    srand (time(NULL));
-    n = rand() % 100;
-    for (i = 0; i < 10; ++i) {
-        cout <<n << endl;
-        bst.insert(n);
-        n = rand() % 100;
-    }
-    bst.inorder();
-    cout <<"\nEnter int to find: ";
-    cin >>n;
-    cin.ignore(MAX, '\n');
-    if (bst.find(n))
-        cout <<n <<" is in our tree." <<endl;
-    else
-        cout <<n <<" is not in our tree." <<endl;
-    //*/
+    // What we want to edit the member's 'state' to
+    string message = "State edited";
 
-    // Test multiple
+    // Perform the edit. tNode has a virtual edit_state function.
+    // When it is called, the program searches the derived class
+    // for the function.
+    cout <<"Edit state to \"State edited\"" <<endl;
+    to_edit->edit_state(message);
 
+    // Display our edited member
+    cout <<"Our edited state:" <<endl;
+    to_edit->display();
 
-
-    // Test operator overloading
-    /*
-    tNode node1(1);
-    tNode node2(2);
-    tNode node3(1);
-
-    cout <<"1 < 2: ";
-    if (node1 < node2)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"2 < 1: ";
-    if (node2 < node1)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"1 > 2: ";
-    if (node1 > node2)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"2 > 1: ";
-    if (node2 > node1)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"1 == 2: ";
-    if (node1 == node2)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"1 == 1: ";
-    if (node3 == node1)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"1 <= 2: ";
-    if (node1 <= node2)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"1 <= 1: ";
-    if (node1 <= node3)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-
-    cout <<"2 <= 1: ";
-    if (node2 <= node1)
-        cout <<"TRUE\n\n";
-    else
-        cout <<"FALSE\n\n";
-    //*/
-
+    // Display our tree to ensure it is still intact
+    cout <<"Making sure our tree is still intact:" <<endl;
+    display_members(member_bst);
 
     return 1;
+}
+
+// Function that takes a Balanced_Tree object and builds it.
+// The file we open has a number of how many items are in the list.
+// We read in this number to know how many times to loop.
+// Upon each iteration, we read in data and use it to create a new
+// Person. We then insert this Person into the tree.
+//
+// This function returns -1 on failure, and 1 on success.
+int build_memberBST(Balanced_Tree & bst) {
+    // MAKE SURE TO SET 'file_name' TO PATH OF "members.txt"!!!
+    string file_name = "C:\\Users\\thisSpectre\\CLionProjects\\TermProjectLocal\\members.txt";//"C:/Users/Carlos Miguel Sayao/CLionProjects/TermProjectLocal/members.txt";
+    ifstream fin;
+    fin.open(file_name.c_str(), ios::in);
+    if (!fin) {
+        cout <<"FAILED TO OPEN \"" <<file_name <<"\"" <<endl;
+        return -1;
+    }
+
+    int i, j;           // stopping conditions
+    int id, zip;
+    char name[MAX], address[MAX], city[MAX], state[MAX];
+
+    fin >>j;
+    fin.ignore(MAX, '\n');
+
+    for (i = 0; i < j; ++i){
+        fin >>id;
+        fin.ignore(MAX, ';');
+
+        fin >>zip;
+        fin.ignore(MAX, ';');
+
+        fin.get(name, MAX, ';');
+        fin.ignore(MAX, ';');
+        string n = name;
+
+        fin.get(address, MAX, ';');
+        fin.ignore(MAX, ';');
+        string a = address;
+
+        fin.get(city, MAX, ';');
+        fin.ignore(MAX, ';');
+        string c = city;
+
+        fin.get(state, MAX, '\n');
+        fin.ignore(MAX, '\n');
+        string s = state;
+
+        Person *member = new Member(id, zip, n, a, c, s);
+        bst.insert(id, member);
+    }
+    fin.close();
+
+    return 1;
+}
+
+int build_providerBST(Balanced_Tree&) {
+}
+
+int build_managerBST(Balanced_Tree&) {
+}
+
+// Display members. Takes a Balanced_Tree object. Calls BST::inorder()
+// to display the tree in order of ID numebr. iomanip::setw()
+// is used formatting. Formatting is as follows:
+/*
+ * Members
+ * ID           Name        Address
+ * -----------------------------------
+ */
+void display_members(Balanced_Tree & bst) {
+    cout <<"Members" <<endl;
+    cout <<left <<setw(13) <<"ID"
+         <<setw(15) <<"Name"
+         <<std::right <<setw(13) <<"Address"
+         <<endl;
+    cout <<setfill('-') <<setw(70) <<"-" <<setfill(' ') <<endl;
+    bst.inorder();
 }
