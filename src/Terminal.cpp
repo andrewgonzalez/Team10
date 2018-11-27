@@ -175,6 +175,7 @@ void Terminal::manager_operator_menu()
       cin.ignore(100, '\n');
 
 // add according function later to each case;
+      ID = 0; // reset ID value
       switch(MO_menu_choice[0])
       {
         case 's':
@@ -190,7 +191,12 @@ void Terminal::manager_operator_menu()
 
         case 'a':
           //cout<<"\n\ta";
-          controller.addPerson(0);
+          ID = controller.addPerson(0);
+          if (ID) {
+            cout << "Member added!" << endl;
+            cout << "Their ID is: " << ID << endl;
+          } else
+            cout << "Member not added." << endl;
           break;
 
         case 'm':
@@ -214,7 +220,12 @@ void Terminal::manager_operator_menu()
 
         case 'A':
           //cout<<"\n\tA";
-          controller.addPerson(0);
+          ID = controller.addPerson(1);
+          if (ID) {
+            cout << "Provider added!" << endl;
+            cout << "Their ID is: " << ID << endl;
+          } else
+            cout << "Provider not added." << endl;
           break;
 
         case 'M':

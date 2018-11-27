@@ -19,30 +19,30 @@ tNode* Controller::findPerson(int treeNum, int ID) {
 }
 
 
-void Controller::addPerson(int treeNum) {
-    char nameInput[25];
+int Controller::addPerson(int treeNum) {
+    char nameInput[NAMESIZE + 1];
     int zipcode, ID;
     string name, address, city, state;
 
-    cout << "Enter a name (25 char max): ";
-    cin.getline(nameInput, 25);
+    cout << "Enter a name (" << NAMESIZE << " char max): ";
+    cin.get(nameInput, NAMESIZE + 1);
     cin.ignore(100, '\n');
     name = nameInput;
 
-    cout << "Enter their street address (25 char max): ";
-    cin.getline(nameInput, 25);
+    cout << "Enter their street address (" << NAMESIZE << " char max): ";
+    cin.get(nameInput, NAMESIZE + 1);
     cin.ignore(100, '\n');
     address = nameInput;
 
-    cout << "Enter their city (14 char max): ";
-    cin.getline(nameInput, 14);
+    cout << "Enter their city (" << CITYSIZE << " char max): ";
+    cin.get(nameInput, CITYSIZE + 1);
     cin.ignore(100, '\n');
     city = nameInput;
 
     zipcode = enterZip();
 
-    cout << "Enter the state (2 chars, such as OR): ";
-    cin.getline(nameInput, 2);
+    cout << "Enter the state (" << STATESIZE << " chars, such as OR): ";
+    cin.get(nameInput, STATESIZE + 1);
     cin.ignore(100, '\n');
     state = nameInput;
 
@@ -60,27 +60,20 @@ void Controller::addPerson(int treeNum) {
         Manager * toAdd = new Manager(ID, zipcode, name, address, city, state);
         people[treeNum].insert(ID, toAdd);
     }
+
+    return ID;
 }
 
 
 int Controller::enterZip() {
-    bool validZip = false;
     // Default value of -1 so if somehow the input doesn't work then the
     // zip code will be an obvious invalid entry.
     int zip = -1;
 
-    while (!validZip) {
-        cout << "Please enter the 5 digit zip code: ";
-        cin >> zip;
-        cin.ignore(100, '\n');
-        validZip = true;
-        if (!cin || cin.fail()) {
-            cout << "Invalid input. Please try again." << endl;
-            cin.clear();
-            cin.ignore(100, '\n');
-            validZip = false;
-        }
-    }
+    cout << "Please enter the 5 digit zip code: ";
+    cin >> zip;
+    cin.ignore(100, '\n');
+    cin.clear();
     return zip;
 }
 

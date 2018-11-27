@@ -16,7 +16,7 @@ public:
     Controller();
     ~Controller();
     tNode* findPerson(int treeNum, int ID);
-    void addPerson(int treeNum);
+    int addPerson(int treeNum);
 private:
 
     int enterZip();
@@ -26,5 +26,10 @@ private:
     // 1 is Provider's tree
     // 2 is Manager's tree
     Balanced_Tree people[3];
+
+    // Defining some constants for input limitations
+    const int NAMESIZE = 25;
+    const int CITYSIZE = 14;
+    const int STATESIZE = 2;
 };
 #endif //CONTROLLER_H

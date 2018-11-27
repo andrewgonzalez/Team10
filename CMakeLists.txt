@@ -38,14 +38,15 @@ endif()
 add_executable(Team10
         src/main.cpp
         #src/person_test.cpp
-        src/Person.cpp
         #src/BST_test.cpp
         src/BST.cpp
         src/Balanced_Tree.cpp
         src/tNode.cpp
+        src/Person.cpp
         src/Member.cpp
-        src/member_service.cpp
         src/Provider.cpp
+        src/Manager.cpp
+        src/member_service.cpp
         src/provider_service.cpp
         src/service.cpp
         src/Terminal.cpp
