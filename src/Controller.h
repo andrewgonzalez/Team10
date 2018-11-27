@@ -8,14 +8,20 @@
 #define CONTROLLER_H
 
 #include <iostream>
+#include <random>
 #include "Balanced_Tree.h"
 
 class Controller {
 public:
     Controller();
     ~Controller();
-    tNode* findPerson(int tree, int ID);
+    tNode* findPerson(int treeNum, int ID);
+    void addPerson(int treeNum);
 private:
+
+    int enterZip();
+    int generateID(int treeNum);
+
     // 0 is Member's tree
     // 1 is Provider's tree
     // 2 is Manager's tree

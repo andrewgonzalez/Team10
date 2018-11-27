@@ -25,7 +25,6 @@ public:
     */
     Person(const Person & copy_from);
     Person(const Person * copy_from);
-    //~Person() override = default;
     virtual ~Person();
 
     virtual void display() const;

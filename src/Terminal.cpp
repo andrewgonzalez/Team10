@@ -188,23 +188,49 @@ void Terminal::manager_operator_menu()
             cout << "Member not found!" << endl;
           break;
 
-        case 'a':cout<<"\n\ta";break;
+        case 'a':
+          //cout<<"\n\ta";
+          controller.addPerson(0);
+          break;
 
-        case 'm':cout<<"\n\tm";break;
+        case 'm':
+          cout<<"\n\tm";
+          break;
 
-        case 'd':cout<<"\n\td";break;
+        case 'd':
+          cout<<"\n\td";
+          break;
 
-        case 'S':cout<<"\n\tS";break;
+        case 'S':
+          //cout<<"\n\tS";
+          ID = enterID();
+          found = controller.findPerson(1, ID);
+          if (found) {
+            cout << "Member found:" << endl;
+            found->display();
+          } else
+            cout << "Member not found!" << endl;
+          break;
 
-        case 'A':cout<<"\n\tA";break;
+        case 'A':
+          //cout<<"\n\tA";
+          controller.addPerson(0);
+          break;
 
-        case 'M':cout<<"\n\tM";break;
+        case 'M':
+          cout<<"\n\tM";
+          break;
 
-        case 'D':cout<<"\n\tD";break;
+        case 'D':
+          cout<<"\n\tD";
+          break;
 
-        case 'b':break;
+        case 'b':
+          break;
 
-        default :cout<<"\n\t Invalid input!"; break;
+        default:
+          cout<<"\n\t Invalid input!";
+          break;
 
       }
     }
@@ -224,7 +250,4 @@ int Terminal::enterID() {
   }
   return ID;
 }
-
-
-
 
