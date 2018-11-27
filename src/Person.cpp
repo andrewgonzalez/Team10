@@ -35,11 +35,16 @@ Person::Person(const Person& copyFrom) : tNode(copyFrom) {
     state = copyFrom.state;
 }
 
+// Destructor
+Person::~Person() {
+
+}
+
 
 // Print Person data members to the standard output.
 // Input: none
 // Output: void
-void Person::display() {
+void Person::display() const {
     cout << name << endl;
     cout << address << endl;
     cout << city << ", " << state << endl;

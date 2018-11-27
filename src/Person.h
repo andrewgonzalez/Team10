@@ -17,8 +17,8 @@ public:
     Person(int id, int zip, string & name, string & address,
             string & city, string & state);
     Person(const Person& copyFrom);
-    ~Person() override = default;
-    virtual void display();
+    ~Person() override;
+    virtual void display() const;
     void setReport();  // what are we doing with this?
 private:
     int ID;                 // 9 digits

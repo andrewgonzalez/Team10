@@ -12,7 +12,7 @@ class Member : public Person {
 public:
     Member();
     ~Member();
-    void display();
+    void display() const;
     void addService();
     void deleteService();
 private:

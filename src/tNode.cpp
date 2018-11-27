@@ -20,6 +20,10 @@ tNode::tNode(const tNode & copyFrom) : data(copyFrom.data), height(copyFrom.heig
     left(copyFrom.left), right(copyFrom.right) {
 }
 
+tNode::~tNode() {
+
+}
+
 void tNode::display() const {
     cout <<data <<endl;
 }

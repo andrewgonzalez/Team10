@@ -19,9 +19,9 @@ public:
     tNode();
     explicit tNode(int data);
     tNode(const tNode & copyFrom);
-    virtual ~tNode() = default;
+    virtual ~tNode();
 
-    void display() const;
+    virtual void display() const;
 
     void set_height(int h);
     int get_height();
