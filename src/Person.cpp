@@ -10,8 +10,9 @@
 Person::Person() : tNode() {
     ID = 0;
     zipcode = 0;
+    is_removed = false;
+    in_good_standing = true;
 }
-
 
 // Constructor taking all data members as parameters.
 Person::Person(int id, int zip, string & name, string & address,
@@ -22,6 +23,8 @@ Person::Person(int id, int zip, string & name, string & address,
     this->address = address;
     this->city = city;
     this->state = state;
+    is_removed = false;
+    in_good_standing = true;
 }
 
 /*
@@ -47,6 +50,8 @@ Person::Person(const Person & copy_from) : tNode() {
     address = copy_from.address;
     city = copy_from.city;
     state = copy_from.state;
+    is_removed = copy_from.is_removed;
+    in_good_standing = copy_from.in_good_standing;
 }
 
 Person::Person(const Person * copy_from) : tNode() {
@@ -56,23 +61,31 @@ Person::Person(const Person * copy_from) : tNode() {
     address = copy_from->address;
     city = copy_from->city;
     state = copy_from->state;
+    is_removed = copy_from->is_removed;
+    in_good_standing = copy_from->in_good_standing;
 }
 
 Person::~Person() {
 
 }
 
+void Person::remove() {
+    is_removed = true;
+}
+
 // Print Person data members to the standard output.
 // Input: none
 // Output: void
 void Person::display() const {
-    cout <<std::left <<setw(13) <<ID
-         <<setw(15) <<name
-         <<std::right <<setw(15) <<address
-         <<", " <<city
-         <<", " <<state
-         <<", " <<zipcode
-         <<endl;
+    if (!is_removed) {
+        cout << std::left << setw(13) << ID
+             << setw(15) << name
+             << std::right << setw(15) << address
+             << ", " << city
+             << ", " << state
+             << ", " << zipcode
+             << endl;
+    }
 }
 
 void Person::edit_state(string & state_in) {
@@ -81,5 +94,6 @@ void Person::edit_state(string & state_in) {
 
 void Person::setReport() {
 }
+
 
 

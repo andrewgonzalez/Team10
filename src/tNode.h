@@ -25,6 +25,7 @@ public:
 
     virtual void display() const = 0;
 
+    virtual void remove() = 0;
     virtual void edit_state(string&) = 0;
 
     void set_height(int h);
