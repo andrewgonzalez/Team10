@@ -4,7 +4,6 @@
  * machine. ifstream::open is used in the build functions.
  */
 
-
 #include "Balanced_Tree.h"
 #include <fstream>              // for reading from file
 #include <ios>                  // for eof()
