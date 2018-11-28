@@ -7,22 +7,29 @@
 
 using namespace std;
 
-//FOR INT TYPE
+// Default constructor
 tNode::tNode() : data(0), height(1),
                 left(nullptr), right(nullptr) {
 }
 
+// Initialize data to passed in member
 tNode::tNode(int data_in) : data(data_in), height(1),
                 left(nullptr), right(nullptr) {
 }
 
+// Copy constructor
 tNode::tNode(const tNode & copyFrom) : data(copyFrom.data), height(copyFrom.height),
     left(copyFrom.left), right(copyFrom.right) {
 }
 
-void tNode::display() const {
-    cout <<data <<endl;
+tNode::~tNode() {
+
 }
+/*
+void tNode::edit_state(string & state_in) {
+
+}
+ */
 
 void tNode::set_height(int h) {
     height = h;
@@ -131,48 +138,8 @@ tNode * tNode::rl_rotate(tNode *& top) {
     return rotate_left(top);
 }
 
-// NOT USED
-// Compare data to be inserted to data in tree
-// if (this->data >= data_in) ? true : false;
-// True means we want to traverse left.
-// False means we want to traverse right.
-bool tNode::compare(const int data_in) {
-    return this->data > data_in || this->data == data_in;
-}
 
-// THIS SECTION RESERVED IN CASE WE MUST COMPARE TWO NODES
-/*
-tNode& tNode::operator = (tNode & node_in) {
-    *this = node_in;
-    return *this;
-}
- */
-
-/*
-bool tNode::operator < (tNode & to_compare) const {
-    if (this->data < to_compare.data)
-        return true;
-    return false;
-}
-
-bool tNode::operator > (tNode & to_compare) const {
-    if (this->data > to_compare.data)
-        return true;
-    return false;
-}
-
-bool tNode::operator <= (tNode & to_compare) const {
-    if (this->data <= to_compare.data)
-        return true;
-    return false;
-}
-
-bool tNode::operator == (tNode & to_compare) const {
-    if (this->data == to_compare.data)
-        return true;
-    return false;
-}
- */
+// Operator overloading to compare our passed in ID to nodes.
 
 bool tNode::operator < (const int to_compare) const {
     return data < to_compare;
@@ -188,8 +155,4 @@ bool tNode::operator <= (const int to_compare) const {
 
 bool tNode::operator == (const int to_compare) const {
     return data == to_compare;
-}
-
-int tNode::get_int() {
-    return data;
 }

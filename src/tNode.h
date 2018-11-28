@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 
 using namespace std;
 
@@ -17,11 +18,14 @@ class tNode {
 public:
 
     tNode();
-    explicit tNode(int data);
+    tNode(int data);
+    //explicit tNode(int data);
     tNode(const tNode & copyFrom);
-    virtual ~tNode() = default;
+    virtual ~tNode();
 
-    void display() const;
+    virtual void display() const = 0;
+
+    virtual void edit_state(string&) = 0;
 
     void set_height(int h);
     int get_height();
@@ -42,17 +46,10 @@ public:
     tNode * rl_rotate(tNode *&);
 
     // Comparison functions
-    bool compare(int data_in);
-    tNode& operator = (const tNode&);
-    bool operator < (const tNode&) const;
-    bool operator > (const tNode&) const;
-    bool operator <= (const tNode&) const;
-    bool operator == (const tNode&) const;
     bool operator < (int) const;
     bool operator > (int) const;
     bool operator <= (int) const;
     bool operator == (int) const;
-    int get_int();
 
 private:
 

@@ -1,11 +1,13 @@
-#include"Terminal.h"
+//
+// Created by Andrew Gonzalez on 11/26/18.
+//
 
-using namespace std;
+#include "Terminal.h"
 
-int main()
-{
-  Terminal object;
-  object.login_menu();
-  return 0;
+int main() {
+    Terminal userInterface;
+
+    userInterface.login_menu();
+
+    return 0;
 }
-
