@@ -1,0 +1,21 @@
+Acupuncture
+100
+400
+Counseling Session
+101
+300
+Chocaholics Anonymous
+102
+250
+Peer Mediation
+103
+150
+Choco Aroma Therapy
+104
+200
+Choco Confession
+105
+100
+Choco Shock Therapy
+106
+400
