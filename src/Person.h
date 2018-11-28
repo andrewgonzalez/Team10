@@ -25,7 +25,10 @@ public:
     */
     Person(const Person & copy_from);
     Person(const Person * copy_from);
+    //~Person() override = default;
     virtual ~Person();
+
+    void remove();
 
     virtual void display() const;
     void edit_name(string & name_in);
@@ -43,6 +46,9 @@ private:
     string address;     // 25 characters
     string city;        // 14 characters
     string state;       // 2 characters
+
+    bool is_removed;
+    bool in_good_standing;
 
 };
 

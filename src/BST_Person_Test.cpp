@@ -62,6 +62,15 @@ int main()
     cout <<"Making sure our tree is still intact:" <<endl;
     display_members(member_bst);
 
+    // Remove a member
+    cout <<"Enter member ID number to remove: ";
+    cin >>num;
+    tNode * to_remove = member_bst.find(num);
+    to_remove->remove();
+
+    // Check to see our person was removed
+    member_bst.inorder();
+
     return 1;
 }
 
