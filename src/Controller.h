@@ -16,10 +16,16 @@ public:
     Controller();
     ~Controller();
     tNode* findPerson(int treeNum, int ID);
-    int addPerson(int treeNum);
+    int addPerson(int treeNum, string name, string address,
+        string city, string state, int zipcode);
+    void modifyName(tNode *pNode, string name);
+    void modifyAddress(tNode *pNode, string address);
+    void modifyCity(tNode *pNode, string city);
+    void modifyZip(tNode *pNode, int zip);
+    void modifyState(tNode *pNode, string state);
+
 private:
 
-    int enterZip();
     int generateID(int treeNum);
 
     // 0 is Member's tree

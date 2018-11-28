@@ -79,7 +79,21 @@ void Person::edit_state(string & state_in) {
     state = state_in;
 }
 
-void Person::setReport() {
+void Person::edit_name(string &name_in) {
+    name = name_in;
 }
 
+void Person::edit_address(string &address_in) {
+    address = address_in;
+}
 
+void Person::edit_city(string &city_in) {
+    city = city_in;
+}
+
+void Person::edit_zip(int zip_in) {
+    zipcode = zip_in;
+}
+
+void Person::set_report() {
+}

@@ -1,4 +1,4 @@
-#include"Terminal.h"
+#include "Terminal.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -153,8 +153,9 @@ void Terminal::operator_menu()
 
 void Terminal::manager_operator_menu()
 {
-    int ID;
+    int ID, zipcode;
     tNode* found;
+    string name, address, city, state;
     char MO_menu_choice[10];
     while(MO_menu_choice[0]!='b')
     {
@@ -191,7 +192,12 @@ void Terminal::manager_operator_menu()
 
         case 'a':
           //cout<<"\n\ta";
-          ID = controller.addPerson(0);
+          name = enterName();
+          address = enterAddress();
+          city = enterCity();
+          zipcode = enterZip();
+          state = enterState();
+          ID = controller.addPerson(0, name, address, city, state, zipcode);
           if (ID) {
             cout << "Member added!" << endl;
             cout << "Their ID is: " << ID << endl;
@@ -200,7 +206,13 @@ void Terminal::manager_operator_menu()
           break;
 
         case 'm':
-          cout<<"\n\tm";
+          //cout<<"\n\tm";
+          ID = enterID();
+          found = controller.findPerson(0, ID);
+          if (found) {
+              modify_person_menu(found);
+          } else
+            cout << "Member not found." << endl;
           break;
 
         case 'd':
@@ -220,7 +232,12 @@ void Terminal::manager_operator_menu()
 
         case 'A':
           //cout<<"\n\tA";
-          ID = controller.addPerson(1);
+            name = enterName();
+            address = enterAddress();
+            city = enterCity();
+            zipcode = enterZip();
+            state = enterState();
+          ID = controller.addPerson(1, name, address, city, state, zipcode);
           if (ID) {
             cout << "Provider added!" << endl;
             cout << "Their ID is: " << ID << endl;
@@ -229,7 +246,13 @@ void Terminal::manager_operator_menu()
           break;
 
         case 'M':
-          cout<<"\n\tM";
+          //cout<<"\n\tM";
+          ID = enterID();
+          found = controller.findPerson(1, ID);
+          if (found) {
+              modify_person_menu(found);
+          } else
+              cout << "Member not found." << endl;
           break;
 
         case 'D':
@@ -249,6 +272,50 @@ void Terminal::manager_operator_menu()
 }
 
 
+void Terminal::modify_person_menu(tNode *person) {
+  int zipcode;
+  string name, address, city, state;
+  char mod_menu_choice[10];
+  while (mod_menu_choice[0] != 'b') {
+    cout<<"\n\t---------------Edit Member/Provider -----------";
+    cout<<"\n\t|                                             |";
+    cout<<"\n\t|        Edit (n)ame                          |";
+    cout<<"\n\t|        Edit (a)ddress                       |";
+    cout<<"\n\t|        Edit (c)ity                          |";
+    cout<<"\n\t|        Edit (z)ipcode                       |";
+    cout<<"\n\t|        Edit (s)tate                         |";
+    cout<<"\n\t|        (b)ack                               |";
+    cout<<"\n\t-----------------------------------------------\n\n\t";
+
+    cin>>mod_menu_choice;
+    cin.ignore(100, '\n');
+
+    switch (mod_menu_choice[0]) {
+        case 'n':
+            name = enterName();
+            controller.modifyName(person, name);
+          break;
+        case 'a':
+            address = enterAddress();
+            controller.modifyAddress(person, address);
+          break;
+        case 'c':
+            city = enterCity();
+            controller.modifyCity(person, city);
+          break;
+        case 'z':
+            zipcode = enterZip();
+            controller.modifyZip(person, zipcode);
+          break;
+        case 's':
+            state = enterState();
+            controller.modifyState(person, state);
+          break;
+    }
+  }
+}
+
+
 int Terminal::enterID() {
   int ID = -1;
   cout << "Please enter the user ID: ";
@@ -262,3 +329,51 @@ int Terminal::enterID() {
   return ID;
 }
 
+
+string Terminal::enterName() {
+    int NAMESIZE = 25;
+    char input[NAMESIZE + 1];
+    cout << "Enter a name (" << NAMESIZE << " char max): ";
+    cin.get(input, NAMESIZE + 1);
+    cin.ignore(100, '\n');
+    return input;
+}
+
+string Terminal::enterCity() {
+    int CITYSIZE = 14;
+    char input[CITYSIZE + 1];
+    cout << "Enter their city (" << CITYSIZE << " char max): ";
+    cin.get(input, CITYSIZE + 1);
+    cin.ignore(100, '\n');
+    return input;
+}
+
+string Terminal::enterAddress() {
+    int ADDRESSSIZE = 25;
+    char input[ADDRESSSIZE + 1];
+    cout << "Enter their street address (" << ADDRESSSIZE << " char max): ";
+    cin.get(input, ADDRESSSIZE + 1);
+    cin.ignore(100, '\n');
+    return input;
+}
+
+string Terminal::enterState() {
+    int STATESIZE = 2;
+    char input[STATESIZE + 1];
+    cout << "Enter the state (" << STATESIZE << " chars, such as OR): ";
+    cin.get(input, STATESIZE + 1);
+    cin.ignore(100, '\n');
+    return input;
+}
+
+int Terminal::enterZip() {
+    // Default value of -1 so if somehow the input doesn't work then the
+    // zip code will be an obvious invalid entry.
+    int zip = -1;
+
+    cout << "Please enter the 5 digit zip code: ";
+    cin >> zip;
+    cin.ignore(100, '\n');
+    cin.clear();
+    return zip;
+}

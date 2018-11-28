@@ -15,7 +15,13 @@ class Terminal
     void operator_menu();
     void manager_operator_menu();
   private:
+    void modify_person_menu(tNode *person);
     int enterID();
+    int enterZip();
+    string enterName();
+    string enterCity();
+    string enterAddress();
+    string enterState();
     Controller controller;
   
 };

@@ -28,8 +28,12 @@ public:
     virtual ~Person();
 
     virtual void display() const;
-    void edit_state(string &);
-    void setReport();   // what are we doing with this?
+    void edit_name(string & name_in);
+    void edit_address(string & address_in);
+    void edit_city(string & city_in);
+    void edit_state(string & state_in);
+    void edit_zip(int zip_in);
+    void set_report();   // what are we doing with this?
 
 private:
 

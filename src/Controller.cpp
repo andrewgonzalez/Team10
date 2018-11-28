@@ -19,33 +19,9 @@ tNode* Controller::findPerson(int treeNum, int ID) {
 }
 
 
-int Controller::addPerson(int treeNum) {
-    char nameInput[NAMESIZE + 1];
-    int zipcode, ID;
-    string name, address, city, state;
-
-    cout << "Enter a name (" << NAMESIZE << " char max): ";
-    cin.get(nameInput, NAMESIZE + 1);
-    cin.ignore(100, '\n');
-    name = nameInput;
-
-    cout << "Enter their street address (" << NAMESIZE << " char max): ";
-    cin.get(nameInput, NAMESIZE + 1);
-    cin.ignore(100, '\n');
-    address = nameInput;
-
-    cout << "Enter their city (" << CITYSIZE << " char max): ";
-    cin.get(nameInput, CITYSIZE + 1);
-    cin.ignore(100, '\n');
-    city = nameInput;
-
-    zipcode = enterZip();
-
-    cout << "Enter the state (" << STATESIZE << " chars, such as OR): ";
-    cin.get(nameInput, STATESIZE + 1);
-    cin.ignore(100, '\n');
-    state = nameInput;
-
+int Controller::addPerson(int treeNum, string name, string address,
+        string city, string state, int zipcode) {
+    int ID;
     ID = generateID(treeNum);
 
     if (0 == treeNum) { // create Member
@@ -65,18 +41,6 @@ int Controller::addPerson(int treeNum) {
 }
 
 
-int Controller::enterZip() {
-    // Default value of -1 so if somehow the input doesn't work then the
-    // zip code will be an obvious invalid entry.
-    int zip = -1;
-
-    cout << "Please enter the 5 digit zip code: ";
-    cin >> zip;
-    cin.ignore(100, '\n');
-    cin.clear();
-    return zip;
-}
-
 int Controller::generateID(int treeNum) {
     int ID;
     std::random_device seed;
@@ -91,3 +55,40 @@ int Controller::generateID(int treeNum) {
         ID = dist(randomGenerator);
     return ID;
 }
+
+void Controller::modifyName(tNode *pNode, string name) {
+    Person * modifyMe = dynamic_cast<Person*>(pNode);
+    if (modifyMe) {
+        modifyMe->edit_name(name);
+    }
+}
+
+void Controller::modifyAddress(tNode *pNode, string address) {
+    Person * modifyMe = dynamic_cast<Person*>(pNode);
+    if (modifyMe) {
+        modifyMe->edit_address(address);
+    }
+
+}
+
+void Controller::modifyCity(tNode *pNode, string city) {
+    Person * modifyMe = dynamic_cast<Person*>(pNode);
+    if (modifyMe) {
+        modifyMe->edit_city(city);
+    }
+}
+
+void Controller::modifyZip(tNode *pNode, int zip) {
+    Person * modifyMe = dynamic_cast<Person*>(pNode);
+    if (modifyMe) {
+        modifyMe->edit_zip(zip);
+    }
+}
+
+void Controller::modifyState(tNode *pNode, string state) {
+    Person * modifyMe = dynamic_cast<Person*>(pNode);
+    if (modifyMe) {
+        modifyMe->edit_state(state);
+    }
+}
+
