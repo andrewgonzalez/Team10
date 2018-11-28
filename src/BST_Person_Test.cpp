@@ -83,7 +83,7 @@ int main()
 // This function returns -1 on failure, and 1 on success.
 int build_memberBST(Balanced_Tree & bst) {
     // MAKE SURE TO SET 'file_name' TO PATH OF "members.txt"!!!
-    string file_name = "C:\\Users\\thisSpectre\\CLionProjects\\TermProjectLocal\\members.txt";//"C:/Users/Carlos Miguel Sayao/CLionProjects/TermProjectLocal/members.txt";
+    string file_name = "C:\\Users\\Carlos Miguel Sayao\\CLionProjects\\Team10\\src\\members.txt";
     ifstream fin;
     fin.open(file_name.c_str(), ios::in);
     if (!fin) {

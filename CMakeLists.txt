@@ -3,6 +3,7 @@ project(Team10)
 
 set(CMAKE_CXX_STANDARD 11)
 
+#[[
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -34,6 +35,7 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
+]]
 
 add_executable(Team10
         src/main.cpp
@@ -53,6 +55,7 @@ add_executable(Team10
         src/Terminal.cpp
         src/Controller.cpp
         src/Provider_Directory.cpp)
-
+#[[
 target_link_libraries(Team10 gtest_main)
 add_test(NAME PersonTest COMMAND DefaultConstructor)
+]]
