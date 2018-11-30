@@ -16,7 +16,7 @@ using namespace std;
 ------------   |    --------------
                ---->|manager_menu|----|       ---------------Manager Menu---------------         ---------------Provider opeartor---------------  
                     --------------    |       |                                        |         |                                             |
-                                      |       |        (m)anage provider or member     |   m     |        (s)earch member                      |
+                                      |       |        (m)anage provider or member     |    m    |        (s)earch member                      |
                                       |------>|        (r)equest weekly report         |-------->|        (a)dd member                         |
                                               |        (q)uit                          |         |        (m)odify member                      |
                                               ------------------------------------------         |        (d)elete member                      |
