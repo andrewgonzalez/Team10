@@ -1,6 +1,6 @@
 #include "Terminal.h"
-#include "controller.h"
-#include "provider_directory.h"
+#include "Controller.h"
+#include "Provider_Directory.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
