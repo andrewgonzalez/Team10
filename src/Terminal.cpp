@@ -137,9 +137,30 @@ void Terminal::operator_menu()
 
       switch(O_menu_choice[0])
       {
-        case 'a': cout<<"\n\ta";break;
+         case 'a':
+          //cout<<"\n\ta";
+          name = enterName();
+          address = enterAddress();
+          city = enterCity();
+          zipcode = enterZip();
+          state = enterState();
+          ID = controller.addPerson(0, name, address, city, state, zipcode);
+          if (ID) {
+            cout << "Member added!" << endl;
+            cout << "Their ID is: " << ID << endl;
+          } else
+            cout << "Member not added." << endl;
+          break;
 
-        case 'm': cout<<"\n\tm";break;
+        case 'm':
+          //cout<<"\n\tm";
+          ID = enterID();
+          found = controller.findPerson(0, ID);
+          if (found) {
+              modify_person_menu(found);
+          } else
+            cout << "Member not found." << endl;
+          break;
 
         case 'd': cout<<"\n\td";break;
 
