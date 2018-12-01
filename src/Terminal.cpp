@@ -1,6 +1,7 @@
 #include "Terminal.h"
 #include "Controller.h"
 #include "Provider_Directory.h"
+#include "Person.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -142,12 +143,12 @@ void Terminal::operator_menu()
       {
          case 'a':
           //cout<<"\n\ta";
-          name = enterName();
-          address = enterAddress();
-          city = enterCity();
-          zipcode = enterZip();
-          state = enterState();
-          ID = controller.addPerson(0, name, address, city, state, zipcode);
+          string name = enterName();
+          string address = enterAddress();
+          string city = enterCity();
+          int zipcode = enterZip();
+          string state = enterState();
+          int ID = controller.addPerson(0, name, address, city, state, zipcode);
           if (ID) {
             cout << "Member added!" << endl;
             cout << "Their ID is: " << ID << endl;
@@ -157,7 +158,7 @@ void Terminal::operator_menu()
 
         case 'm':
           //cout<<"\n\tm";
-          ID = enterID();
+          int ID = enterID();
           found = controller.findPerson(0, ID);
           if (found) {
               modify_person_menu(found);
@@ -165,7 +166,15 @@ void Terminal::operator_menu()
             cout << "Member not found." << endl;
           break;
 
-        case 'd': cout<<"\n\td";break;
+        case 'd': 
+          int ID = enterID();
+          tnode* found=controller.findPerson(0,ID)
+          if(found){
+            tnode.remove();
+          }
+          else
+            cout << "Member not found." << endl;
+          break;
 
         case 'b': break;
 
@@ -240,7 +249,13 @@ void Terminal::manager_operator_menu()
           break;
 
         case 'd':
-          cout<<"\n\td";
+          ID = enterID();
+          tnode* found=controller.findPerson(0,ID)
+          if(found){
+            tnode.remove();
+          }
+          else
+            cout << "Member not found." << endl;
           break;
 
         case 'S':
@@ -280,7 +295,13 @@ void Terminal::manager_operator_menu()
           break;
 
         case 'D':
-          cout<<"\n\tD";
+          ID = enterID();
+          tnode* found=controller.findPerson(1,ID)
+          if(found){
+            tnode.remove();
+          }
+          else
+            cout << "Provider not found." << endl;
           break;
 
         case 'b':
