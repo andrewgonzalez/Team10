@@ -1,4 +1,6 @@
 #include "Terminal.h"
+#include "controller.h"
+#include "provider_directory.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -105,7 +107,8 @@ void Terminal::manager_menu()
         break;
 
       case 'r':
-        cout<<"\n\tReport";
+//        cout<<"\n\tReport";
+        Provider_Directory.Directory_Display();
         break;
 
       case 'q':
